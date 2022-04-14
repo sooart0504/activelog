@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/activelog/static/css/main.e6c13ad2.css",
+    "main.js": "/activelog/static/js/main.da6bc38b.js",
+    "index.html": "/activelog/index.html",
+    "main.e6c13ad2.css.map": "/activelog/static/css/main.e6c13ad2.css.map",
+    "main.da6bc38b.js.map": "/activelog/static/js/main.da6bc38b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.da6bc38b.js"
+  ]
+}
