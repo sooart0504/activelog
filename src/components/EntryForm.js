@@ -3,22 +3,19 @@ import LogEntry from "./LogEntry";
 
 function EntryForm(props) {
 
-    // const [input, setInput] = useState("");
     const {input, setInput, entries, setEntries} = props;
 
+    // Updates the user input value
     const updateInput = (e) => {
         setInput(e.target.value);
-
-
     }
 
+    // Updates the list of user logs with the new input value added
     const updateArray = (wordinput) => {
         setEntries((existingEntries) => {
             //existingEntries automatically calls entries
             return [wordinput, ...existingEntries];
         })
-        // setEntries([input, ...entries])
-
     }
 
     return (

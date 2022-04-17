@@ -1,55 +1,72 @@
-import React from "react";
-import './App.css';
-import EntryList from "./components/EntryList";
+import { useState, useEffect} from "react";
+import { MdEdit } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Moment from 'react-moment';
+
 import UserLevel from "./components/UserLevel";
 import EntryForm from "./components/EntryForm";
-import {useState} from "react";
 
 
 function App() {
     const [level, setLevel] = useState("Novice");
     const [input, setInput] = useState("");
-    const [entries, setEntries] = useState(["walking", "yoga", "swimming"]);
+    const [entries, setEntries] = useState([]);
     const [reset, setReset] = useState("False");
+    const [time, setTime] = useState("");
 
+    // Update the list of user logs with the chosen log removed
     function deleteEntryitem (indexNum) {
         let newArray = entries;
 
         newArray.splice(indexNum, 1)
 
-        setEntries(() => {
-            // newArray = existingValue.splice(indexNum, 1)
-            return newArray;
-        })
+        return setEntries([...newArray]);
     }
 
+    // Display the list of user logs in a card (bootstrap)
     function presentEntries () {
-        console.log(entries)
         let entriesList = [];
 
-        // entriesList.push(<ul>);
         entries.map((entry, i) => {
+           const currentTime = new Date().toString();
 
-            entriesList.push(<li key={i}>{entry} <button>Edit</button> <button onClick={() => {deleteEntryitem(i)}}>Delete</button></li>)
-        })
-
+            entriesList.push(
+                <div className="card-container" key={i}>
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Body>
+                            <Card.Title>{currentTime}</Card.Title>
+                            <Card.Text>{entry}</Card.Text>
+                            <Button onClick={() => {}}><MdEdit /></Button> <Button onClick={() => {deleteEntryitem(i)}}><MdDelete /></Button>
+                        </Card.Body>
+                    </Card>
+                </div>
+            )
+        });
 
         return entriesList;
     }
 
   return (
-    <>
       <div className="activelog-app">
         <h1>Activelog App</h1>
+
           {/* User Level: {level} */}
           <UserLevel level={level} setLevel={setLevel} />
-          <EntryList entries={entries} setEntries={setEntries} />
+
+          {/*<EntryList entries={entries} setEntries={setEntries} />*/}
+
+          {/* Display input box and Add button */}
           <EntryForm input={input} setInput={setInput} entries={entries} setEntries={setEntries} />
-          {/*{input}*/}
+
+          {/* Display button for Resetting user data */}
+          <button>Reset User Data</button>
+
+          {/* Display the list of all logs saved */}
           {presentEntries()}
-          {/*{entries}*/}
       </div>
-    </>
   );
 }
 
