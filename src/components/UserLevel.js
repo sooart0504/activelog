@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 
 function UserLevel(props) {
-    const {level, setLevel} = props;
+    const {rank, setRank} = props;
 
     return (
         <div>
-            User Level: {level}
+            User Activity Level: {rank}
         </div>
     )
 }
