@@ -4,7 +4,6 @@ import { MdDelete } from 'react-icons/md';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Moment from 'react-moment';
 
 import UserLevel from "./components/UserLevel";
 import EntryForm from "./components/EntryForm";
@@ -34,16 +33,12 @@ function App() {
         let entriesList = [];
 
         entries.map((entry, i) => {
-            const currentTime = new Date().toString();
-
             entriesList.push(
                 <div className="card-container" key={i}>
                     <Card style={{ width: '18rem' }}>
                         <Card.Body>
-                            <Card.Title>{entry.time_value}</Card.Title>
+                            <Card.Title>{entry.input_time}</Card.Title>
                             <Card.Text>{entry.input_value}</Card.Text>
-                            {/*<Card.Title>{currentTime}</Card.Title>*/}
-                            {/*<Card.Text>{entry}</Card.Text>*/}
                             <Button onClick={() => {}}><MdEdit /></Button> <Button onClick={() => {deleteEntryitem(i)}}><MdDelete /></Button>
                         </Card.Body>
                     </Card>
@@ -54,23 +49,24 @@ function App() {
         return entriesList;
     }
 
-    function resetData () {
-        return
+    const resetData = () => {
+        setEntries([]);
+        setLevel(0);
     }
 
     useEffect(() => {
         if (level <= 3) {
-            setRank("Novice");
+            setRank("Novice 🏃");
         } else if (3 < level && level <= 8) {
-            setRank("Beginner");
+            setRank("Beginner 🏃🏃");
         } else if (8 < level && level <= 13) {
-            setRank("Intermediate");
+            setRank("Intermediate 🏃🏃🏃");
         } else if (13 < level && level <= 19) {
-            setRank("Advanced");
+            setRank("Advanced 💪");
         } else if (19 < level && level <= 26) {
-            setRank("Expert");
+            setRank("Expert 💪💪");
         } else {
-            setRank("Master");
+            setRank("Master 💪💪💪");
         }
     }, [level]);
 
@@ -86,11 +82,11 @@ function App() {
           {/* Display input box and Add button */}
           <EntryForm input={input} setInput={setInput} entries={entries} setEntries={setEntries} level={level} setLevel={setLevel} time={time} setTime={setTime} />
 
-          {/* Display button for Resetting user data */}
-          <button onClick={resetData()}>Reset User Data</button>
-
           {/* Display the list of all logs saved */}
           {presentEntries()}
+
+          {/* Display button for Resetting user data */}
+          <button onClick={() => {resetData()}}>Reset User Data</button>
       </div>
   );
 }
