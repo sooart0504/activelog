@@ -5,7 +5,7 @@ import './EntryForm.css';
 
 function EntryForm(props) {
 
-    const {input, setInput, entries, setEntries, level, setLevel, time, setTime} = props;
+    const {input, setInput, entries, setEntries, level, setLevel, time, setTime, progress, setProgress} = props;
 
     // Updates the user input value
     const updateInput = (e) => {
@@ -17,12 +17,13 @@ function EntryForm(props) {
     }
 
     // Updates the list of user logs with the new input value added
-    const updateArray = (inputs) => {
+    const updateArray = (input) => {
         setLevel(level + 1);
+        setProgress(progress + 5);
 
         setEntries((existingEntries) => {
             //existingEntries automatically calls entries
-            return [inputs, ...existingEntries];
+            return [input, ...existingEntries];
         })
     }
 
