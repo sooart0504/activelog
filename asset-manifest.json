@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/activelog/static/css/main.4d92b1c3.css",
-    "main.js": "/activelog/static/js/main.52b3249d.js",
+    "main.css": "/activelog/static/css/main.e91daefc.css",
+    "main.js": "/activelog/static/js/main.b152e8e5.js",
     "index.html": "/activelog/index.html",
-    "main.4d92b1c3.css.map": "/activelog/static/css/main.4d92b1c3.css.map",
-    "main.52b3249d.js.map": "/activelog/static/js/main.52b3249d.js.map"
+    "main.e91daefc.css.map": "/activelog/static/css/main.e91daefc.css.map",
+    "main.b152e8e5.js.map": "/activelog/static/js/main.b152e8e5.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d92b1c3.css",
-    "static/js/main.52b3249d.js"
+    "static/css/main.e91daefc.css",
+    "static/js/main.b152e8e5.js"
   ]
 }
