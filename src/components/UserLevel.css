@@ -1,0 +1,34 @@
+.user-progress {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    font-size: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.rank-name {
+
+}
+
+.progress-to-master {
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+.progress-bar-only {
+    max-width: 30%;
+    height: 28px;
+    box-shadow: 4px 8px 15px -7px rgba(30, 166, 250, 0.36);
+    border-radius: 20px;
+    transition: all 0.5s;
+    margin-top: 6px;
+}
+
+.rank-toast {
+    box-shadow: 4px 8px 15px -7px rgba(30, 166, 250, 0.36);
+}
+
+.me-auto {
+    color: #427EE0;
+    font-weight: bold;
+}

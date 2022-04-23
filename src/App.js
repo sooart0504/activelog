@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Alert from 'react-bootstrap/Alert';
 import { v4 as uniqueId } from 'uuid';
+import './App.css';
 
 import UserLevel from "./components/UserLevel";
 import EntryForm from "./components/EntryForm";
@@ -14,9 +15,9 @@ import EntryForm from "./components/EntryForm";
 function App() {
     const [level, setLevel] = useState(0);
     const [rank, setRank] = useState("");
+    const [progress, setProgress] = useState(0);
     const [input, setInput] = useState({input_value: "", input_time: ""});
     const [entries, setEntries] = useState([]);
-    const [progress, setProgress] = useState(0);
     const [time, setTime] = useState("");
     const [saved, setSaved] = useState([]);
     const [showAlert, setShowAlert] = useState(false);
@@ -75,11 +76,11 @@ function App() {
         entries.map((entry, i) => {
             entriesList.push(
                 <div className="card-container" key={i}>
-                    <Card style={{ width: '18rem' }}>
+                    <Card className="each-card">
                         <Card.Body>
-                            <Card.Title>{entry.input_time}</Card.Title>
-                            <Card.Text>{entry.input_value}</Card.Text>
-                            <Button onClick={() => {saveExercise(entry)}}>Save</Button> <Button onClick={() => {deleteEntryitem(i)}}><MdDelete /></Button>
+                            <Card.Title className="card-title">{entry.input_time}</Card.Title>
+                            <Card.Text className="card-body">{entry.input_value}</Card.Text>
+                            <Button className="card-buttons" onClick={() => {saveExercise(entry)}}>Save</Button> <Button className="card-buttons" onClick={() => {deleteEntryitem(i)}}><MdDelete /></Button>
                         </Card.Body>
                     </Card>
                 </div>
@@ -94,12 +95,12 @@ function App() {
 
         saved.map((entry, i) => {
             savedList.push(
-                <div>
-                    <Card style={{ width: '18rem' }}>
+                <div className="card-container">
+                    <Card className="each-card">
                         <Card.Body>
-                            <Card.Title>{entry.input_value}</Card.Title>
-                            <Card.Text>Exercise created on {entry.input_time}</Card.Text>
-                            <Button onClick={() => {addSavedToArray(entry, entry.id)}}><MdAdd /></Button> <Button onClick={() => {deleteSaveditem(i)}}><MdDelete /></Button>
+                            <Card.Title className="card-title">{entry.input_value}</Card.Title>
+                            <Card.Text className="card-body">Exercise created on {entry.input_time}</Card.Text>
+                            <Button className="card-buttons" onClick={() => {addSavedToArray(entry, entry.id)}}><MdAdd /></Button> <Button className="card-buttons" onClick={() => {deleteSaveditem(i)}}><MdDelete /></Button>
                         </Card.Body>
                     </Card>
                 </div>
@@ -155,13 +156,18 @@ function App() {
           {AlertMessage()}
 
           {/* Display the list of all logs saved */}
-          {presentEntries()}
+          <h2>Exercise Logs</h2>
+          <div className="logs-container">
+              {presentEntries()}
+          </div>
 
           <h2>Saved Exercises</h2>
-          {presentSaved()}
+          <div className="saved-container">
+            {presentSaved()}
+          </div>
 
           {/* Display button for Resetting user data */}
-          <button onClick={() => {resetData()}}>Reset User Data</button>
+          <button className="reset-data-button" onClick={() => {resetData()}}>Reset Logs</button>
       </div>
   );
 }
